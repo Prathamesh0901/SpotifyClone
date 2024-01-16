@@ -1,0 +1,525 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #000;
+    color: #fff;
+    overflow: hidden;
+}
+
+.main-content::-webkit-scrollbar{
+    width: 10px;
+}
+
+.main-content::-webkit-scrollbar-track{
+    display: none;
+    background: #121212;
+}
+
+.main-content::-webkit-scrollbar-thumb{
+    background: #252525;
+    border-radius: 10px;
+}
+
+.main{
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(8,1fr);
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+.sidebar{
+    grid-row-start: 1;
+    grid-row-end: 8;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    border-radius: 1rem;
+    display: grid;
+    gap: 0.5rem;
+    grid-template-rows: repeat(5,1fr);
+    background: #000;
+}
+
+.main-content{
+    background-color: #121212;
+    grid-row-start: 1;
+    grid-row-end: 8;
+    grid-column-start: 2;
+    grid-column-end: 6;
+    border-radius: 1rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.music-player{
+    background-color: rgb(0, 0, 0);
+    grid-row-start: 8;
+    grid-row-end: 9;
+    grid-column-start: 1;
+    grid-column-end: 6;
+    z-index: 1;
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav{
+    background-color: #121212;
+    padding: 0.8rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.logoContainer{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.logo{
+    filter: invert(1);
+}
+
+.close{
+    display: none;
+}
+
+.nav-option{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    opacity: 0.7;
+}
+
+.home, .search{
+    width: 1.5rem;
+    height: 1.5rem;
+    filter: invert(1);
+}
+
+.nav-option:hover{
+    opacity: 1;
+}
+
+.nav-option i{
+    font-size: 1.25rem;
+}
+
+.nav-option a{
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.library{
+    background-color: #121212;
+    grid-row-start: 2;
+    grid-row-end: 6;
+    border-radius: 1rem;
+    padding: 0.5rem 0.75rem;
+    overflow-y: auto;
+}
+
+.options{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lib-option{
+    height: 50px;
+}
+
+.lib-option img{
+    height: 1.25rem;
+    width: 1.25rem;
+    margin-right: 1rem;
+}
+
+.lib-option .icons{
+    font-size: 1.25rem;
+    opacity: 0.7;
+    margin-right: 1rem;
+    display: flex;
+}
+
+.icons i{
+    opacity: 0.7;
+    margin-right: 1rem;
+}
+
+.icons i:hover{
+    opacity: 1;
+}
+
+.lib-boxes{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+}
+
+.library::-webkit-scrollbar{
+    width: 10px;
+}
+
+.library::-webkit-scrollbar-track{
+    display: none;
+    background: #121212;
+}
+
+.library::-webkit-scrollbar-thumb{
+    background: #252525;
+    border-radius: 10px;
+}
+
+.box{
+    background-color: #232323;
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 0.5fr;
+    align-items: center;
+    justify-content: left;
+    gap: 1rem;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    overflow: auto;
+    cursor: pointer;
+}
+
+.info{
+    height: 3rem;
+    font-size: 0.8rem;
+}
+
+.info p{
+    margin: 0;
+    padding-top: 0.4rem;
+}
+
+.box img{
+    width: 2rem;
+    height: 2rem;
+    filter: invert(1);
+}
+
+.play-button-library{
+    background: #232323;
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+.sticky-nav{
+    position: sticky;
+    top: -2px;
+    background: #121212;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.sticky-nav-icons{
+    display: flex;
+    gap: 1rem;
+}
+
+.hamburger{
+    display: none;
+}
+
+.sticky-nav-options{
+    display: flex;
+    gap: 1rem;
+}
+
+.option{
+    width: 5.5rem;
+    height: 1.8rem;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.sign-up{
+    background-color: #121212;
+    color: #fff;
+}
+
+.cards{
+    padding: 1rem;
+}
+
+.cards-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.card{
+    width: 12.5rem;
+    background: #252525;
+    padding: 0.8rem;
+    border-radius: 0.6rem;
+}
+
+.card img{
+    width: 100%;
+    object-fit: contain;
+    margin-bottom: -50px;
+}
+
+.play-button{
+    margin: 0;
+    padding: 0;
+    border: none;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    position: relative;
+    top: -2px;
+    left: 145px;
+    background-color: #1bd760;
+    box-shadow: 0px 5px 8px#121212;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    transition: transform 0.1s ease-in-out;
+    transition: translate 0.15s ease-in;
+}
+
+.card-image:hover{
+    .play-button{
+        visibility: visible;
+        translate: 0px -10px ;
+    }
+}
+
+.play-button:hover{
+    transform: scale(1.1);
+}
+
+.play-button img{
+    margin-bottom: 0;
+    height:2rem;
+}
+
+.music-player{
+    display: flex;
+}
+
+.album{
+    width: 25%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.album-icon{
+    height: 4rem;
+    border-radius: 3px;
+}
+
+.album-name {
+    font-weight: bold;
+}
+
+.album-singer{
+    font-size: 0.8rem;
+}
+
+.album-like, .album-mini{
+    height: 1.5rem;
+}
+
+.player{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.player-controls{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.player-controls img{
+    height: 1rem;
+    margin: 0rem 0.9rem;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+
+.player-controls #play{
+    filter: invert(1);
+}
+
+.player-controls img:hover{
+    opacity: 1;
+}
+
+.playback-bar{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+.progress-bar{
+    width: 70%;
+    appearance: none;
+    height: 0.2rem;
+    border-radius: 100px;
+    cursor: pointer;
+    margin: 1rem;
+}
+
+.progress-bar::-webkit-slider-runnable-track{
+    background: linear-gradient(to right, #4caf50 0%, #4caf50 var(--thumb-progress, 0%), #ccc var(--thumb-progress, 0%), #ccc 100%);
+    height: 0.2rem;
+    border-radius: 100px;
+    transition: background 0.3s ease-in;
+}
+
+.progress-bar::-webkit-slider-thumb{
+    appearance: none;
+    height: 0.8rem;
+    width: 0.8rem;
+    background-color: #1bd760;
+    border-radius: 50%;
+    margin-top: -5px;
+    position: relative;
+    right: 0%;
+    transition: all 0.3s ease-in; 
+    visibility: hidden;
+}
+
+.playback-bar:hover{
+    .progress-bar::-webkit-slider-thumb{
+        visibility: visible;
+    }
+}
+
+.controls{
+    width: 25%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.icons{
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.control{
+    height: 1.5rem;
+    opacity: 0.7;
+}
+
+.control:hover{
+    opacity: 1;
+}
+
+.volume-control{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-right: 1rem;
+}
+
+.volume-bar{
+    appearance: none;
+    height: 0.2rem;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.volume-bar::-webkit-slider-runnable-track{
+    background: linear-gradient(to right, #4caf50 0%, #4caf50 var(--volume, 100%), #ccc var(--volume, 100%), #ccc 100%);
+    height: 0.2rem;
+    border-radius: 100px;
+}
+
+.volume-bar::-webkit-slider-thumb{
+    appearance: none;
+    height: 1rem;
+    width: 1rem;
+    background-color: #1bd760;
+    border-radius: 50%;
+    margin-top: -6px;
+}
+
+@media (max-width: 1280px){
+    .sidebar{
+        height: 100vh;
+        position: absolute;
+        left: -120%;
+        transition: all 0.3s ease-in;
+        z-index: 1;
+        width: 300px;
+        border-right: 1px solid black;
+    }
+
+    .close{
+        display: block;
+        filter: invert(1);
+    }
+
+    .main-content{
+        width: 100vw;
+        margin-left: -0.5rem;
+    }
+
+    .hamburger{
+        display: block;
+        filter: invert(1);
+    }
+}
+
+@media (max-width: 700px){
+    .album, .controls{
+        display: none;
+    }
+
+    .player{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card{
+        width: 8rem;
+    }
+
+    .play-button{
+        width: 2.5rem;
+        height: 2.5rem;
+        left: 80px;
+    }
+}
