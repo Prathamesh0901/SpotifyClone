@@ -1,4 +1,4 @@
-const folderPath = './Songs/';
+const folderPath = 'https://github.com/Prathamesh0901/SpotifyClone/tree/main/Songs';
 let currentSong = new Audio();
 let songsList;
 let track = '';
@@ -143,7 +143,7 @@ async function main() {
                 break;
             }
         }
-        if(index + 1 <= songsList.length){
+        if(index + 1 < songsList.length){
             track = songsList[index + 1].title;
             playMusic(track);
         }
