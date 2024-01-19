@@ -1,4 +1,4 @@
-const folderPath = 'https://github.com/Prathamesh0901/SpotifyClone/tree/main/Songs';
+const folderPath = './Songs';
 let currentSong = new Audio();
 let songsList;
 let track = '';
