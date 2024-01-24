@@ -1,5 +1,4 @@
-const folderPath = './Songs';
-let currentFolder = '/English%20playlist/';
+const folderPath = './Songs/';
 let currentSong = new Audio();
 let playLists;
 let songsList;
@@ -212,17 +211,17 @@ async function main() {
     
     // Adding next functionality
     next.addEventListener('click', () => {
-        playNext();
-    });
-
-    // Adding mute functionality
-    volume.addEventListener('click', () => {
-        if(currentSong.volume !== 0){
-            updateSongVolume(0);
-            document.querySelector('.volume-bar').value = 0;
-        } else {
-            updateSongVolume(50);
-            document.querySelector('.volume-bar').value = 50;
+        let index;
+        for (let i = 0; i < songsList.length; i++) {
+            const element = songsList[i];
+            if(element.title === track){
+                index = i;
+                break;
+            }
+        }
+        if(index + 1 <= songsList.length){
+            track = songsList[index + 1].title;
+            playMusic(track);
         }
     });
     
