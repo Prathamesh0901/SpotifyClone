@@ -212,7 +212,6 @@ async function main() {
     
     // Adding next functionality
     next.addEventListener('click', () => {
-<<<<<<< HEAD
         playNext();
     });
 
@@ -224,7 +223,6 @@ async function main() {
         } else {
             updateSongVolume(50);
             document.querySelector('.volume-bar').value = 50;
-=======
         let index;
         for (let i = 0; i < songsList.length; i++) {
             const element = songsList[i];
@@ -236,8 +234,8 @@ async function main() {
         if(index + 1 < songsList.length){
             track = songsList[index + 1].title;
             playMusic(track);
->>>>>>> b001547f99f54fbd2d00133a8e775ed38f3ab54d
         }
+    }
     });
     
 }
