@@ -474,6 +474,10 @@ a{
     margin-top: -6px;
 }
 
+#volume{
+    filter: invert(1);
+}
+
 @media (max-width: 1280px){
     .sidebar{
         height: 100vh;
@@ -483,6 +487,7 @@ a{
         z-index: 1;
         width: 300px;
         border-right: 1px solid black;
+        padding-left: 0.5rem;
     }
 
     .close{
@@ -493,6 +498,7 @@ a{
     .main-content{
         width: 100vw;
         margin-left: -0.5rem;
+        overflow-x: none;
     }
 
     .hamburger{

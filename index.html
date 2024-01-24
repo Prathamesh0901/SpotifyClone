@@ -81,70 +81,8 @@
             </div>
 
             <div class="cards">
-                    <h2>Recently Played</h2>
+                    <h2>PlayLists</h2>
                     <div class="cards-container">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="Assets/card1img.jpeg">
-                                <button class="play-button"><img src="Assets/play-svgrepo-com.svg" alt=""></button>
-                            </div>
-                            <p class="card-title">Top 50 - Global</p>
-                            <p class="card-info">Your daily updates of the most played tracks</p>
-                        </div>
-                    </div>
-                    <h2>Trending now near you</h2>
-                    <div class="cards-container">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="Assets/card2img.jpeg">
-                                <button class="play-button"><img src="Assets/play-svgrepo-com.svg" alt=""></button>
-                            </div>
-                            <p class="card-title">Mahiye Jinna Sohna</p>
-                            <p class="card-info">Melody to hear</p>
-                        </div>
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="Assets/card3img.jpeg">
-                                <button class="play-button"><img src="Assets/play-svgrepo-com.svg" alt=""></button>
-                            </div>
-                            <p class="card-title">Mere Paas Tum Ho</p>
-                            <p class="card-info">Your daily updates of the most played tracks</p>
-                        </div>
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="Assets/card4img.jpeg">
-                                <button class="play-button"><img src="Assets/play-svgrepo-com.svg" alt=""></button>
-                            </div>
-                            <p class="card-title">Leo Songs</p>
-                            <p class="card-info">Your daily updates of the most played tracks</p>
-                        </div>
-                    </div>
-                    <h2>Featured Charts</h2>
-                    <div class="cards-container">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="Assets/card5img.jpeg">
-                                <button class="play-button"><img src="Assets/play-svgrepo-com.svg" alt=""></button>
-                            </div>
-                            <p class="card-title">Top Songs - Global</p>
-                            <p class="card-info">Most played tracks globally</p>
-                        </div>
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="Assets/card6img.jpeg">
-                                <button class="play-button"><img src="Assets/play-svgrepo-com.svg" alt=""></button>
-                            </div>
-                            <p class="card-title">Top Songs - India</p>
-                            <p class="card-info">Most played tracks in India</p>
-                        </div>
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="Assets/card1img.jpeg">
-                                <button class="play-button"><img src="Assets/play-svgrepo-com.svg" alt=""></button>
-                            </div>
-                            <p class="card-title">Top 50 - Global</p>
-                            <p class="card-info">Your daily updates of the most played tracks</p>
-                        </div>
                     </div>
                     <br><br><br>
             </div>
@@ -154,10 +92,10 @@
         <div class="music-player">
 
             <div class="album">
-                <img src="Assets/album_picture.jpeg" alt="" class="album-icon">
+                <img src="Assets/music-note.svg" alt="" class="album-icon" style="filter: invert(1);">
                 <div class="album-info">
-                    <p class="album-name">Daylight</p>
-                    <p class="album-singer">David Kushner</p>
+                    <p class="album-name"></p>
+                    <!-- <p class="album-singer">David Kushner</p> -->
                 </div>
                 <!-- <img src="Assets/album_icon1.png" alt="" class="album-like">
                 <img src="Assets/album_icon2.png" alt="" class="album-mini"> -->
@@ -190,7 +128,7 @@
 
                 <div class="volume-control">
                     
-                    <img src="Assets/controls_icon5.png" alt="" class="control">
+                    <img id="volume" src="Assets/volume.svg" alt="" class="control">
                     <input type="range" min="0" max="100" value="100" class="volume-bar" onchange="updateSongVolume(this.value)">
                     
                 </div>
