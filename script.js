@@ -1,4 +1,4 @@
-const folderPath = './Songs';
+const folderPath = '/Songs';
 let currentFolder = '/English%20playlist/';
 let currentSong = new Audio();
 let playLists;
