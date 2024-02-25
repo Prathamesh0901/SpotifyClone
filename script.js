@@ -1,21 +1,46 @@
-const folderPath = '/Songs';
-let currentFolder = '/English%20playlist/';
+import { data } from "./Songs/index.js";
+import { data0 } from "./Songs/English%20playlist/index.js";
+import { data1 } from "./Songs/Hindi%20playlist/index.js";
+import { data2 } from "./Songs/Marathi%20playlist/index.js";
+
+let playLists = [];
+getPlayLists();
+
+let temp = [];
+temp[0] = getSongs(data0);
+temp[1] = getSongs(data1);
+temp[2] = getSongs(data2);
+
+let songsList = {};
+let songsListArray = [];
+
+let i=0;
+while(i<playLists.length){
+    songsList[playLists[i].title] = temp[i].slice();
+    i++;
+}
+
+const playListArray = Object.keys(songsList);
+
+const folderPath = './Songs';
+let currentFolder = `${playLists[0].title}`;
+
+updateLibrary();
+
 let currentSong = new Audio();
-let playLists;
-let songsList;
-let track = '';
+let track = `${songsListArray[0]}`;
 
 function playNext() {
     let index;
-    for (let i = 0; i < songsList.length; i++) {
-        const element = songsList[i];
-        if(element.title === track){
+    for (let i = 0; i < songsListArray.length; i++) {
+        const element = songsListArray[i];
+        if(element === track){
             index = i;
             break;
         }
     }
-    if(index + 1 <= songsList.length){
-        track = songsList[index + 1].title;
+    if(index + 1 <= songsListArray.length){
+        track = songsListArray[index + 1];
         playMusic(track);
     }
 }
@@ -24,17 +49,23 @@ function updateLibrary() {
     let list2 = '';
     let libraryList = document.querySelector('.lib-boxes');
     libraryList.innerHTML = '';
-    songsList.forEach((song) => {
-        let html = `
-        <div class="box js-box">
-            <img src="Assets/music-note.svg" alt="">
-            <div class="info">
-                <p>${song.title.split('.mp3', 1)}</p>
-            </div>
-            <button class="play-button-library js-play-button-library"><img src="Assets/play.svg" alt=""></button>
-        </div>
-        `;
-        list2 += html;
+    songsListArray = [];
+    playListArray.forEach((key) => {
+        if(key === currentFolder){
+            songsList[key].forEach((song) => {
+                songsListArray.push(song.title.split(".mp3", 1)[0]);
+                let html = `
+                <div class="box js-box">
+                    <img src="Assets/music-note.svg" alt="">
+                    <div class="info">
+                        <p>${song.title.split('.mp3', 1)}</p>
+                    </div>
+                    <button class="play-button-library js-play-button-library"><img src="Assets/play.svg" alt=""></button>
+                </div>
+                `;
+                list2 += html;
+            }); 
+        }  
     });
     libraryList.innerHTML = list2;
 
@@ -42,22 +73,21 @@ function updateLibrary() {
 
     libBoxes.forEach((box) => {
         box.addEventListener('click', () => {
-            track = `${box.querySelector('.info').firstElementChild.innerHTML}.mp3`;
-            // updateSongVolume(100);
+            track = `${box.querySelector('.info').firstElementChild.innerHTML}`;
             playMusic(track);
         });
     });
 }
 
 function playMusic(track, pause=false) {
-    currentSong.src = folderPath + currentFolder + track;
+    currentSong.src = folderPath + `/${currentFolder}` + `/${track}.mp3`;
     if(!pause){
         currentSong.play();
         play.src = 'Assets/pause.svg';
     } else {
         play.src = 'Assets/play.svg';
     }
-    document.querySelector('.album-name').innerHTML = track.split('.mp3', 1);
+    document.querySelector('.album-name').innerHTML = track;
 }
 
 function formatMinutes(seconds){
@@ -70,13 +100,13 @@ function formatMinutes(seconds){
     return `${finalMinutes}:${finalSeconds}`;
 }
 
-function updateSongTime(value){
+export function updateSongTime(value){
     const percentage = value/100;
     const newTime = currentSong.duration *percentage;
     currentSong.currentTime = newTime;
 }
 
-function updateSongVolume(value) {
+export function updateSongVolume(value) {
     if(value == '0') {
         volume.src = 'Assets/mute.svg';
     } else {
@@ -88,27 +118,21 @@ function updateSongVolume(value) {
     volumeBar.style.setProperty('--volume', `${value}%`);
 }
 
-async function getPlayLists() {
-    let response = await fetch(folderPath);
-    let data = await response.text();
+function getPlayLists() {
     let div = document.createElement("div");
     div.innerHTML = data;
     let as = div.getElementsByTagName("a");
-    let playLists = [];
     for(let i = 0;i< as.length;i++){
         const element = as[i];
         if(element.href.endsWith("playlist")){
             playLists.push(element);
         }
     }
-    return playLists;
 }
 
-async function getSongs() {
-    let response = await fetch(folderPath + currentFolder);
-    let data = await response.text();
+function getSongs(info) {
     let div = document.createElement("div");
-    div.innerHTML = data;
+    div.innerHTML = info;
     let as = div.getElementsByTagName("a");
     let songsList = [];
     for(let i = 0;i< as.length;i++){
@@ -121,9 +145,6 @@ async function getSongs() {
 }
 
 async function main() {
-    playLists = await getPlayLists();
-    songsList = await getSongs();
-    track = songsList[0].title;
     playMusic(track, true);
 
     let list1 = '';
@@ -147,14 +168,13 @@ async function main() {
 
     cards.forEach((card) => {
         card.addEventListener('click', async () => {
-            currentFolder = `/${card.querySelector('.card-title').innerHTML}/`;
-            songsList = await getSongs();
+            currentFolder = `${card.querySelector('.card-title').innerHTML}`;
             updateLibrary();
-            playMusic(songsList[0].title);
+            track = songsListArray[0];
+            playMusic(track);
         });
     });
     
-    updateLibrary();
 
     // Add event listener to boxes in library
     play.addEventListener('click', () => {

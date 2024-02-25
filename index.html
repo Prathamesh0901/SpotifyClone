@@ -15,6 +15,11 @@
 </head>
 
 <body>
+
+    <script type="module" src="script.js"></script>
+    <script type="module">
+        import { updateSongTime, updateSongVolume } from "./script.js";
+    </script>
     
     <div class="main">
 
@@ -117,7 +122,7 @@
                 <div class="playback-bar">
 
                     <span class="songTime">--:--</span>
-                    <input type="range" min="0" max="100" class="progress-bar" onchange="updateSongTime(this.value)">
+                    <input type="range" min="0" max="100" value = "50" class="progress-bar" oninput="updateSongTime(this.value)">
                     <span class="songDuration">--:--</span>
 
                 </div>
@@ -129,7 +134,7 @@
                 <div class="volume-control">
                     
                     <img id="volume" src="Assets/volume.svg" alt="" class="control">
-                    <input type="range" min="0" max="100" value="100" class="volume-bar" onchange="updateSongVolume(this.value)">
+                    <input type="range" min="0" max="100" value="50" class="volume-bar" oninput="updateSongVolume(this.value)">
                     
                 </div>
 
@@ -138,8 +143,6 @@
         </div>
 
     </div>
-
-    <script src="script.js"></script>
 
 </body>
 
